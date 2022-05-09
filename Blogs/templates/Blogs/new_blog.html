@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>Add a new blog</h2>
+    <form action="{% url 'Blogs:new_blog'%}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">Add new blog</button>
+    </form>
+</body>
+</html>

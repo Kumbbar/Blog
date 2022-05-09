@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="{% static 'css/logout.css' %}">
+</head>
+<body>
+  <div class="Main">
+    <h1>Completed logged out</h1>
+    <h2><a  class="log-again" href="{% url 'users:login' %}">Log in again</a> -
+      <a class="Home" href="{% url 'Blogs:index' %}">Home page</a></h2>
+  </div>
+</body>
+</html>

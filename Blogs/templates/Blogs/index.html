@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>My Blog</title>
+  <link rel="stylesheet" href="{% static 'css/indexCSS.css' %}" type="text/css">
+  <link rel="shortcut icon" href="/css/pexels-mihis-alex-21008.jpg" type="image/jpg">
+</head>
+
+<body>
+
+  {% if user.is_authenticated %}
+
+    <h2>Hello,{{ user.username }}
+      <a href="{% url 'Blogs:new_blog' %}" class="NewLink">New Blog</a> -
+      <a class="logoutL" href="{% url 'Blogs:edit_all_blogs' %}">Edit my Blogs</a>
+      <a class="logoutR" href="{% url 'users:logout' %} ">Log out</a>
+    </h2>
+
+  {% else %}
+      <h2>
+        <a href="{% url 'users:login' %}">Log in</a>
+        <a href="{% url 'users:register' %}">Register</a>
+      </h2>
+  {% endif %}
+
+
+  {% for blog in blogs %}
+    <div class="Blog">
+
+      <h3>{{ blog.title }}</h3>
+      <div class="Text">
+        <p> {{ blog.text }} </p>
+      </div>
+      <div class="Info">
+        <p>{{ blog.date_added }}
+{#          {% if user.is_authenticated %}#}
+{#          <a href="{% url 'Blogs:edit_blog' blog.id %}">Edit blog</a>#}
+{#          {% endif %}#}
+        </p>
+      </div>
+    </div>
+  {% endfor %}
+
+
+</body>
+
+</html>

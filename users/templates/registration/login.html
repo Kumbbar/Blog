@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in</title>
+    <link rel="stylesheet" href="{% static 'css/loginCSS.css' %}">
+</head>
+<body>
+    {% block content %}
+        {% if form.errors %}
+            <p>Invalid name or password</p>
+        {% endif %}
+        <form action="{% url 'users:login' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button name="submit">Log in</button>
+            <input name="next" type="hidden" value="{% url 'Blogs:index' %}">
+        </form>
+    {% endblock content %}
+</body>
+</html>

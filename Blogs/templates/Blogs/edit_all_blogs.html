@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{% static 'css/indexCSS.css' %}" type="text/css">
+  <title>Your Blogs</title>
+</head>
+<body>
+  <a href="{% url 'users:logout' %}">Log out</a>
+  {% for blog in blogs %}
+    <div class="Blog">
+
+      <h3>{{ blog.title }}</h3>
+      <div class="Text">
+        <p> {{ blog.text }} </p>
+      </div>
+      <div class="Info">
+        <p>{{ blog.date_added }}
+          {% if user.is_authenticated %}
+          <a href="{% url 'Blogs:edit_blog' blog.id %}">Edit blog</a>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+  {% endfor %}
+</body>
+</html>
